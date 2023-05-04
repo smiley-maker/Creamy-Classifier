@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Creamy Classifier</title>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <div class="container space-between">
+                <a href="#home"><div class="logo"><img src="../static/creamy classifier logo.png" alt="logo" class="logo-img"></div></a>
+                <img src="../static/menu (1).png" alt="Menu button to open mobile navigation" class="menu-btn">
+                <div class="desktop-menu">
+                    <ul class="nav-elements">
+                        <li class="nav-element"><a href="#home" class="nav-link">home</a></li>
+                        <li class="nav-element"><a href="#about" class="nav-link">about</a></li>
+                        <li class="nav-element"><a href="#review" class="nav-link">write a review</a></li>
+                    </ul>
+                    <a class="cta" href="#contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="section home" id="home">
+        <div class="container extra-padding position-relative">
+            <div class="content">
+                <h2 class="heading one">Welcome to the</h2>
+                <h1 class="display">creamy classifier</h1>
+                <p class="large-paragraph reduced-width">We offer a dynamic platform for ice cream reviews. The reviews are evaluated using machine learning based sentiment analysis to determine if they are more positive or negative. The classifier also employs a continuous learning approach by asking for your feedback!</p>
+                <a class="cta" href="#about">learn more</a>
+                <img src="../static/arrow.svg" alt="arrow icon pointing down the page" class="arrow">
+            </div>
+            <div class="bg-circle"></div>
+        </div>
+        <img src="../static/ice cream image.png" alt="Decorative image of colorful ice cream" class="hero-img">
+    </div>
+    <div class="section about" id="about">
+        <div class="container column extra-padding">
+            <div class="grid">
+                <img src="../static/image (17).png" alt="image of an ice cream shop" class="bg">
+                <div class="grid-content">
+                    <h1 class="heading grid-h1">Learn More About Us!</h1>
+                    <div class="content-wrapper">
+                        <p class="large-paragraph">
+                            Creamy Classifier allows customers to review their experience with Ben & Jerry’s ice cream. It is a useful business tool because the company can get an overall estimate of how a large amount of customers feel about their products. The classifier rates reviews as either generally more positive or negative. Further, customers are able to indicate whether this sentiment classification was correct or not, providing a continually learning model.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h2 class="display-two right">How it works: </h2>
+            <h5 class="heading-five">Stochastic Gradient Descent Classification</h5>
+            <p class="regular-paragraph">
+                Creamy Classifier uses a sochastic gradient descent optimization technique along with a linear support vector machine model.  Gradient descent in general is often used in minimization problems, in which a target goal is desired, such as minimizing the cost of some series of actions. Stochastic gradient descent is similar, but allows the gradient to be taken with just one sample.
+            </p>
+            <h5 class="heading-five">Count Vectorizer</h5>
+            <p class="regular-paragraph">
+                The classifier also implements a count vectorizer which is used to transform a given review into a vector. It uses the frequency of each word in the review to creae a kind of table containing only unique words. This makes it much easier for machine learning models to understand and classify the text.
+            </p>
+            <h5 class="heading-five">TFIDF Vectorizer</h5>
+            <p class="regular-paragraph">
+                The Term Frequency Inverse Document Frequency vectorizer is used to transform text into meaningful numbers that the model can understand. It is essentially a measure of how unique a word is. The mathematical component to the TFIDF vectorizer is more complex, but it involves using the associated word weights described by the count vectorizer.
+            </p>
+            <h5 class="heading-five">Pickling the model</h5>
+            <p class="regular-paragraph">
+                Out of core learning was implemented in order for the model to be pickled and used in the web based review classification system. Pickling involved serializing the model so that a standalone Python model was created implementing a hashing vectorizer using the optimized tfidf vectorizer. A SQLlite database was created so that the machine learning model could be continuously updated with new data from reviewers.
+            </p>
+            <h5 class="heading-five">Website Creation</h5>
+            <p class="regular-paragraph">
+                Finally, Flask was used to link the machine learning model to various components on a (this) website.
+            </p>
+        </div>
+    </div>
+    <div class="section" id="review">
+        <div class="container space-between">
+            <div class="review-container">
+                <h1 class="display">Write a review!</h1>
+                <h2 class="heading-two">ready to get started? </h2>
+                <p class="large-paragraph">
+                    The button below will open a popup with a review form. Please complete the form with your Ben & Jerry’s review to see our model’s evaluation of it. We ask that you also indicate the prediction accuracy afterwards in order to help our model continuously improve its performance. Thanks!
+                </p>
+                <a class="cta" id="open-form" href="/modal">write your review!</a>
+            </div>
+            <div class="contact-container" id="contact">
+                <h2 class="heading-two">contact us</h2>
+                <form action="mailto:jordan.sinclair@du.edu" method="POST" class="contact-form" enctype="text/plain">
+                    <input type="text" class="text-input" placeholder="your name">
+                    <input type="email" class="text-input" placeholder="your email">
+                    <textarea name="" id="" cols="30" rows="7" class="message-input" placeholder="your message..."></textarea>
+                    <button class="btn" type="submit">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% block modal %}{% endblock %}
+    {% block results %}{% endblock %}
+    {% block thanks %}{% endblock %}
+</body>
+{% block script %}{% endblock %}
+</html>

@@ -1,0 +1,16 @@
+{% extends 'reviewform.html' %}
+{% block thanks %}
+    <div class="modal">
+        <div class="close-modal">
+            <a href="{{url_for('index')}}" class="cta">Close Modal</a>
+        </div>
+        <div class="modal-content">
+            <h3>Thanks for your feedback!</h3>
+            <div id="button">
+                <form action="/modal">
+                    <input type=submit class="cta" value="Submit another review">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

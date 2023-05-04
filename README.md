@@ -1,2 +1,2 @@
 # Creamy-Classifier
-This project sought to find an accurate sentiment analysis model for Ben &amp; Jerry's ice cream reviews using machine learning classification. I created a dynamic web based platform to accept new reviews and classify them in real time. This platform also allows for user feedback and a continuously improving model.
+This project sought to find an accurate sentiment analysis model for Ben &amp; Jerry's ice cream reviews using machine learning classification. I created a dynamic web based platform to accept new reviews and classify them in real time. This platform also allows for user feedback and a continuously improving model. Feel free to view the website and write a review of Ben & Jerry's ice cream at http://artengine.pythonanywhere.com/! 

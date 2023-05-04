@@ -1,0 +1,52 @@
+{% extends 'reviewform.html' %}
+{% block modal %}
+    <div class="modal">
+        <div class="close-modal">
+            <a href="{{url_for('index')}}" class="close">Close Modal</a>
+        </div>
+        <div class="modal-content">
+            <img id="logo" src="../static/creamy classifier logo.png">
+            <h3 class="logo-text"><b>Creamy Classifier</b></h3>
+            <h2 class="heading-two">Please enter your Ben & Jerry's review:</h2>
+
+            {% from "_formhelpers.html" import render_field %}
+
+            <form method=post action="/results">
+                <dl>
+                    {{ render_field(form.creamyreview, cols='50', rows='7') }}
+                </dl>
+                <div>
+                    <input type=submit value='Submit review' name='submit_btn' class='cta'>
+                </div>
+                {% if form.creamyreview.errors %}
+                    <ul class="erros">
+                        {% for error in form.creamyreview.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function() {
+        let btn = document.getElementById("open-form");
+        let close = document.getElementByClass("close-modal");
+        function noscroll() {
+            window.scrollTo(0,0);
+        }
+
+        btn.addEventListener('click', function(){
+            window.addEventListener("scroll",noscroll);
+            document.querySelector(".modal").style.display = 'none';
+//            $("#modal").modal("show");
+        });
+
+        close.addEventListener('click', function(){
+            document.querySelector(".modal").style.display = 'none';
+        });
+    });
+</script>
+{% endblock %}

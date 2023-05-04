@@ -1,0 +1,23 @@
+{% extends 'reviewform.html' %}
+{% block results %}
+<div class="modal">
+    <div class="close-modal">
+        <a href="{{url_for('index')}}" class="cta">Close Modal</a>
+    </div>
+    <div class="modal-content">
+        <h2 class="heading-two">Your Review:</h2>
+        <div id="your-review">{{ content }}</div>
+
+        <h2>Prediction:</h2>
+        <div><p>Your creamy review is <strong> {{ prediction }}</strong> (with a probability of: {{ probability }}%).</p></div>
+        <div id="feedback">
+            <form action="/thanks.html" method="post">
+                <input class="cta" type=submit value='Correct' name='feedback_button'>
+                <input class="cta" type=submit value = 'Incorrect' name='feedback_button'>
+                <input class="cta" type=hidden value='{{ prediction }}' name='prediction'>
+                <input type=hidden value='{{ content }}' name='review'>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
